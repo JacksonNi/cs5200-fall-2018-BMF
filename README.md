@@ -1,6 +1,4 @@
 # cs5200-fall-2018-BMF
-Group name: BMF
-Group member(First-Last):
-Baian Chen
-Mengqi Li
-Fenghui Ni
+## Group name: BMF<br>
+## Group member(First-Last):  <br>
+### Baian Chen<br> Mengqi Li<br> Fenghui Ni<br>
