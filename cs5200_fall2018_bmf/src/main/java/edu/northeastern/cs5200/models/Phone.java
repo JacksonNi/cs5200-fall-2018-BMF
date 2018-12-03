@@ -9,7 +9,7 @@ public class Phone {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String phone;
-	private boolean primary;
+	private boolean primary_phone;
 	
 	@ManyToOne
 	private User user;
@@ -27,11 +27,12 @@ public class Phone {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public boolean isPrimary() {
-		return primary;
+
+	public boolean isPrimary_phone() {
+		return primary_phone;
 	}
-	public void setPrimary(boolean primary) {
-		this.primary = primary;
+	public void setPrimary_phone(boolean primary_phone) {
+		this.primary_phone = primary_phone;
 	}
 	public User getUser() {
 		return user;

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Fan extends User {
 
 	private boolean membership;
-	private String[] followedClub;
-	private String[] followedPlayer;
-	private String[] followedCoach;
+//	private String[] followedClub;
+//	private String[] followedPlayer;
+//	private String[] followedCoach;
 }

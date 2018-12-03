@@ -16,7 +16,7 @@ public class Address {
 	private String city;
 	private String state;
 	private String zip;
-	private boolean primary;
+	private boolean primary_add;
 	
 	@ManyToOne
 	private User user;
@@ -61,12 +61,13 @@ public class Address {
 		this.zip = zip;
 	}
 
-	public boolean isPrimary() {
-		return primary;
+
+	public boolean isPrimary_add() {
+		return primary_add;
 	}
 
-	public void setPrimary(boolean primary) {
-		this.primary = primary;
+	public void setPrimary_add(boolean primary_add) {
+		this.primary_add = primary_add;
 	}
 
 	public User getUser() {

@@ -1,18 +1,28 @@
 package edu.northeastern.cs5200.models;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Faculty extends User{
 	
-	private boolean Tauhorized;
+	@OneToMany(mappedBy="faculty")
+	private List<Tournament> authoredTours;
 
-	public boolean isTauhorized() {
-		return Tauhorized;
+	public List<Tournament> getAuthoredTours() {
+		return authoredTours;
 	}
 
-	public void setTauhorized(boolean tauhorized) {
-		Tauhorized = tauhorized;
+	public void setAuthoredTours(List<Tournament> authoredTours) {
+		this.authoredTours = authoredTours;
+	}
+	public void setAuthoredTour(Tournament t) {
+		this.authoredTours.add(t);
+		if (t.getFaculty() != this) {
+			t.setFaculty(this);
+		}
 	}
 	
 	

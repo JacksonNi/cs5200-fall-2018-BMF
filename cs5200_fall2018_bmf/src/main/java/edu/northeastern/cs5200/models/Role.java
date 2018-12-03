@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Role {
@@ -18,4 +19,18 @@ public class Role {
 	private Date start;
 	private int jerseyNumber;
 	private int club;
+	
+	@ManyToOne
+	private Player player;
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+		if (!player.getRoles().contains(this)) {
+			player.getRoles().add(this);
+		}
+	}
 }

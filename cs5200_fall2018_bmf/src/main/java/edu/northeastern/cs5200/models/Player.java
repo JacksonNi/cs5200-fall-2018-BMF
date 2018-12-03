@@ -1,6 +1,10 @@
 package edu.northeastern.cs5200.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Player extends User {
@@ -11,8 +15,23 @@ public class Player extends User {
 	private int jerseyNumber;
 	private String gender;
 	private String preferredFoot;
-	private String role;
 	
+	@OneToMany(mappedBy="player")
+	private List<Role> roles;
+		
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	public void setRole(Role r) {
+		this.roles.add(r);
+		if (r.getPlayer() != this) {
+			r.setPlayer(this);
+		}
+	} 
 	
 	public String getNationality() {
 		return nationality;
@@ -50,12 +69,7 @@ public class Player extends User {
 	public void setPreferredFoot(String preferredFoot) {
 		this.preferredFoot = preferredFoot;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+
 	
 	
 	
