@@ -9,8 +9,7 @@ public class Coach extends User {
 	
 	private String nationality;
 	
-	@OneToOne
-	@MapsId
+	@OneToOne(mappedBy="coach")
 	private Club club;
 
 	public Club getClub() {

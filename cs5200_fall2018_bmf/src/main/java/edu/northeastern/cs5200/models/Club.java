@@ -43,8 +43,19 @@ public class Club {
 	@OneToOne(mappedBy="club")
 	private Away away;
 	
+	@OneToOne
+	private Coach coach;
 	
 	
+	
+	public Coach getCoach() {
+		return coach;
+	}
+
+	public void setCoach(Coach coach) {
+		this.coach = coach;
+	}
+
 	public Away getAway() {
 		return away;
 	}
