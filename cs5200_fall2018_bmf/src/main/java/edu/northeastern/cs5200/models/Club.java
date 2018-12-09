@@ -1,10 +1,10 @@
 package edu.northeastern.cs5200.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -21,33 +23,71 @@ public class Club {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String clubName;
+	private String clubId;
+	private String name;
 	private String country;
 	private String venueName;
-	private String venueCapacity;
+	private int venueCapacity;
 	private String city;
 	
+	@OneToMany(mappedBy="club")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Player> players;
+	
 	@ManyToMany(mappedBy="joined_clubs")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Tournament> joined_tournaments;
 	
-	@Enumerated(EnumType.STRING)
-	private Jersey jersey;
+	@OneToMany(mappedBy="club")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private List<Jersey> jerseys;
 	
 	@OneToMany(mappedBy="club")
 	@OnDelete(action=OnDeleteAction.CASCADE)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<ClubSeasonData> club_season_data;
-	
-	@OneToOne(mappedBy="club")
-	private Home home;
-	
-	@OneToOne(mappedBy="club")
-	private Away away;
 	
 	@OneToOne
 	private Coach coach;
 	
 	
-	
+	public Club() {
+		super();
+		this.players = new ArrayList<>();
+		this.joined_tournaments = new ArrayList<>();
+		this.jerseys = new ArrayList<>();
+		this.club_season_data = new ArrayList<>();
+	}
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+	public void setPlayer(Player p) {
+		this.players.add(p);
+		if (p.getClub() != this) {
+			p.setClub(this);
+		}
+	}
+
+	public List<Jersey> getJerseys() {
+		return jerseys;
+	}
+
+	public void setJerseys(List<Jersey> jerseys) {
+		this.jerseys = jerseys;
+	}
+	public void setJersey(Jersey j) {
+		this.jerseys.add(j);
+		if (j.getClub() != this) {
+			j.setClub(this);
+		}
+	}
+
 	public Coach getCoach() {
 		return coach;
 	}
@@ -56,21 +96,6 @@ public class Club {
 		this.coach = coach;
 	}
 
-	public Away getAway() {
-		return away;
-	}
-
-	public void setAway(Away away) {
-		this.away = away;
-	}
-
-	public Home getHome() {
-		return home;
-	}
-
-	public void setHome(Home home) {
-		this.home = home;
-	}
 
 	public List<ClubSeasonData> getClub_season_data() {
 		return club_season_data;
@@ -109,12 +134,12 @@ public class Club {
 		this.id = id;
 	}
 
-	public String getClubName() {
-		return clubName;
+	public String getName() {
+		return name;
 	}
 
-	public void setClubName(String clubName) {
-		this.clubName = clubName;
+	public void setName(String clubName) {
+		this.name = clubName;
 	}
 
 	public String getCountry() {
@@ -133,11 +158,11 @@ public class Club {
 		this.venueName = venueName;
 	}
 
-	public String getVenueCapacity() {
+	public int getVenueCapacity() {
 		return venueCapacity;
 	}
 
-	public void setVenueCapacity(String venueCapacity) {
+	public void setVenueCapacity(int venueCapacity) {
 		this.venueCapacity = venueCapacity;
 	}
 
@@ -149,14 +174,14 @@ public class Club {
 		this.city = city;
 	}
 
-	public Jersey getJersey() {
-		return jersey;
+	public String getClubId() {
+		return clubId;
 	}
 
-	public void setJersey(Jersey jersey) {
-		this.jersey = jersey;
+	public void setClubId(String clubId) {
+		this.clubId = clubId;
 	}
-	
+
 	
 	
 	

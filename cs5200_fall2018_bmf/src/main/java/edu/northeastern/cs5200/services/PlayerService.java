@@ -27,7 +27,8 @@ public class PlayerService {
 			@RequestParam(name="password") String password) {
 		
 		return pr.findPlayerByCredentials(username, password);
-		
 	}
+	
+	
 
 }

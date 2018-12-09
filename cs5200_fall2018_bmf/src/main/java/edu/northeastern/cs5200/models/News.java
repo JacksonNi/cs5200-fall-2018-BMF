@@ -23,6 +23,22 @@ public class News {
 			match.getNewses().add(this);
 		}
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFact() {
+		return fact;
+	}
+
+	public void setFact(String fact) {
+		this.fact = fact;
+	}
 	
 	
 	

@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,7 +22,8 @@ public class Tournament {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String tname;
+	private String tournament_id;
+	private String name;
 	private String cname;
 	private String countryCode;
 	
@@ -39,6 +41,12 @@ public class Tournament {
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Season> seasons;
 	
+
+	public Tournament() {
+		super();
+		this.joined_clubs = new ArrayList<>();
+		this.seasons = new ArrayList<>();
+	}
 
 	public List<Season> getSeasons() {
 		return seasons;
@@ -80,6 +88,48 @@ public class Tournament {
 			c.getJoined_tournaments().add(this);
 		}
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTournament_id() {
+		return tournament_id;
+	}
+
+	public void setTournament_id(String tournament_id) {
+		this.tournament_id = tournament_id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+	
+	
 	
 	
 }

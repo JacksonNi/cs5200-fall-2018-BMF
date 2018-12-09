@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name="matches")
 public class Match {
@@ -18,16 +22,19 @@ public class Match {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String weather;
+	private String match_id;
 	private String venue;
-	private int attendance;
-	private String type;
-	private int number;
+	private String scheduled;
+	private String status;
+	private String winner_id;
+	
+	
 	
 	@ManyToOne
 	private Season season;
 	
 	@OneToMany(mappedBy="match")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<News> newses;
 	
 	@OneToOne(mappedBy="match")
@@ -37,6 +44,10 @@ public class Match {
 	private Away away;
 	
 	
+	public Match() {
+		super();
+		this.newses = new ArrayList<>();
+	}
 
 	public Away getAway() {
 		return away;
@@ -77,6 +88,54 @@ public class Match {
 		if (!season.getMatches().contains(this)) {
 			season.getMatches().add(this);
 		}
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMatch_id() {
+		return match_id;
+	}
+
+	public void setMatch_id(String match_id) {
+		this.match_id = match_id;
+	}
+
+	public String getVenue() {
+		return venue;
+	}
+
+	public void setVenue(String venue) {
+		this.venue = venue;
+	}
+
+	public String getScheduled() {
+		return scheduled;
+	}
+
+	public void setScheduled(String scheduled) {
+		this.scheduled = scheduled;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getWinner_id() {
+		return winner_id;
+	}
+
+	public void setWinner_id(String winner_id) {
+		this.winner_id = winner_id;
 	}
 	
 	
