@@ -1,0 +1,22 @@
+<div *ngIf="club">
+  <div>
+    <label>ClubName: </label> {{club.clubName}}
+  </div>
+  <div>
+    <label>Country: </label> {{club.country}}
+  </div>
+  <div>
+    <label>City: </label> {{club.city}}
+  </div>
+  <div>
+    <label>Active: </label> {{club.active}}
+  </div>
+
+  <span class="button is-small btn-primary" *ngIf='club.active' (click)='updateActive(false)'>Inactive</span>
+
+  <span class="button is-small btn-primary" *ngIf='club.active' (click)='updateActive(true)'>Active</span>
+
+  <span class="button is-small btn-danger" (click)='deleteClub()'>Delete</span>
+
+  <hr/>
+</div>
