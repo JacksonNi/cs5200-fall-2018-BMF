@@ -1,9 +1,0 @@
-<h1>Clubs</h1>
-
-<div *ngFor="let club of clubs | async" style="width: 300px;">
-  <customer-details [club]='club'></customer-details>
-</div>
-
-<div>
-  <button type="button" class="button btn-danger" (click)='deleteClubs()'>Delete All</button>
-</div>
