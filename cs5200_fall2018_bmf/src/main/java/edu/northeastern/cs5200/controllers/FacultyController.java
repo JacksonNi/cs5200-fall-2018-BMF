@@ -5,15 +5,18 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.northeastern.cs5200.models.Coach;
 import edu.northeastern.cs5200.models.Faculty;
 import edu.northeastern.cs5200.repositories.FacultyRepository;
 
 @RestController
+@CrossOrigin
 public class FacultyController {
 	
 	@Autowired
@@ -28,6 +31,11 @@ public class FacultyController {
 	@GetMapping("/api/search/faculties")
 	public List<Faculty> finfAllFaculty() {
 		return (List<Faculty>) facultyRepo.findAll();
+	}
+	
+	@PostMapping("/api/update/faculty")
+	public Faculty updateCoach(@RequestBody Faculty update) {
+		return facultyRepo.save(update);
 	}
 	
 }

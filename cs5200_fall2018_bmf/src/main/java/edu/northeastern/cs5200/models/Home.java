@@ -16,6 +16,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Home {
 	
@@ -39,6 +41,7 @@ public class Home {
 
 	private String club_id;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="home")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)

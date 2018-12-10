@@ -16,6 +16,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Away {
 	
@@ -32,12 +34,14 @@ public class Away {
 	private int goal_kicks;
 	private int yellow_cards;
 	
+	
 	@OneToOne
 	@JoinColumn(name = "match_id")
 	private Match match;
 	
 	private String club_id;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="away")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)

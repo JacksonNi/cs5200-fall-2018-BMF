@@ -16,5 +16,8 @@ public interface PlayerRepository extends CrudRepository<Player, Integer> {
 	
 	@Query("SELECT player FROM Player player WHERE player.player_id=:id")
 	public Player findPlayerByPlayerId(@Param("id") String id);
+	
+	@Query("SELECT player FROM Player player WHERE player.username=:username")
+	public Player findByPlayerUsername(@Param("username") String name);
 
 }

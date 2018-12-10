@@ -40,9 +40,11 @@ public class Match {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<News> newses;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy="match")
 	private Home home;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy="match")
 	private Away away;
 	
