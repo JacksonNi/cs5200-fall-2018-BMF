@@ -10,5 +10,8 @@ public interface ClubRepository extends CrudRepository<Club, Integer> {
 	
 	@Query("SELECT club FROM Club club WHERE club.clubId=:id")
 	public Club findClubByClubId(@Param("id") String id);
+	
+	@Query("SELECT club FROM Club club WHERE club.name=:name")
+	public Club findByClubName(@Param("name") String name);
 
 }

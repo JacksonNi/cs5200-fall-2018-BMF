@@ -11,16 +11,20 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Fan extends User {
 
 	private boolean membership;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="fan")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<FollowedClub> followedClubs;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="fan")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)

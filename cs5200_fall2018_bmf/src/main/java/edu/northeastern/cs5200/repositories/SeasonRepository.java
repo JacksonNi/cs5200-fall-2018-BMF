@@ -10,5 +10,8 @@ public interface SeasonRepository extends CrudRepository<Season, Integer> {
 	
 	@Query("SELECT season FROM Season season WHERE season.season_id=:id")
 	public Season findSeasonBySeasonId(@Param("id") String id);
+	
+	@Query("SELECT season FROM Season season WHERE season.sname=:name")
+	public Season findBySeasonName(@Param("name") String name);
 
 }

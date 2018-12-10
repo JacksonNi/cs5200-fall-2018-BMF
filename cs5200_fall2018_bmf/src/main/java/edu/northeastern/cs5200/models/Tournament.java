@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tournament {
 
@@ -27,6 +29,7 @@ public class Tournament {
 	private String cname;
 	private String countryCode;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="club_tournament",
 		joinColumns = @JoinColumn(name = "tournament_id"),
@@ -37,6 +40,7 @@ public class Tournament {
 	@ManyToOne
 	private Faculty faculty;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="tournament")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Season> seasons;

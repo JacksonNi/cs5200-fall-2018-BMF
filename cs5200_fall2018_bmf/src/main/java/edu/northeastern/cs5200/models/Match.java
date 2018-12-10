@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="matches")
 public class Match {
@@ -33,6 +35,7 @@ public class Match {
 	@ManyToOne
 	private Season season;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="match")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<News> newses;

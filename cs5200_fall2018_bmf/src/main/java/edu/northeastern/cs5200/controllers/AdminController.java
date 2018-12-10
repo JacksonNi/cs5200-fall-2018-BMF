@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.services;
+package edu.northeastern.cs5200.controllers;
 
 import javax.servlet.http.HttpSession;
 
@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.northeastern.cs5200.models.Fan;
-import edu.northeastern.cs5200.repositories.FanRepository;
+import edu.northeastern.cs5200.models.Admin;
+import edu.northeastern.cs5200.repositories.AdminRepository;
 
 @RestController
-public class FanService {
-
+public class AdminController {
 	
 	@Autowired
-	FanRepository fanRepo;
+	AdminRepository adminRepo;
 	
-	@PostMapping("/api/register/fan")
-	public Fan register(@RequestBody Fan user, HttpSession session) {
+	@PostMapping("/api/register/admin")
+	public Admin register(@RequestBody Admin user, HttpSession session) {
 		session.setAttribute("currentUser", user);
-		return fanRepo.save(user);
+		return adminRepo.save(user);
 	}
-	
+
 }

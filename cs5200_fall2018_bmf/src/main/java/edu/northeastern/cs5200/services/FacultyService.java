@@ -1,25 +1,25 @@
 package edu.northeastern.cs5200.services;
 
-import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import edu.northeastern.cs5200.models.Faculty;
 import edu.northeastern.cs5200.repositories.FacultyRepository;
 
-@RestController
+@Service
 public class FacultyService {
-	
+
 	@Autowired
 	FacultyRepository facultyRepo;
 	
-	@PostMapping("/api/register/faculty")
-	public Faculty register(@RequestBody Faculty user, HttpSession session) {
-		session.setAttribute("currentUser", user);
-		return facultyRepo.save(user);
+	public Faculty findById(int id) {
+		Optional<Faculty> oFaculty = facultyRepo.findById(id);
+		if (oFaculty.isPresent()) {
+			return oFaculty.get();
+		}
+		return null;
 	}
-
+	
 }

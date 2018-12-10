@@ -16,6 +16,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Season {
 
@@ -36,11 +38,14 @@ public class Season {
 	@ManyToOne
 	private Tournament tournament;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="season")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<ClubSeasonData> club_season_data;
 	
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="season")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)

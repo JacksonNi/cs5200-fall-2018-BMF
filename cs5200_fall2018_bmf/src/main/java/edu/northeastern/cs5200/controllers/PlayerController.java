@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.services;
+package edu.northeastern.cs5200.controllers;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import edu.northeastern.cs5200.models.Player;
 import edu.northeastern.cs5200.repositories.PlayerRepository;
 
 @RestController
-public class PlayerService {
+public class PlayerController {
 	
 	@Autowired
 	PlayerRepository pr;
@@ -27,18 +27,11 @@ public class PlayerService {
 	}
 	
 	
-	@GetMapping("/api/read/user/players")
+	@GetMapping("/api/search/players")
 	public List<Player> findAllPlayers() {
 		return (List<Player>) pr.findAll();
 	}
 	
-	@GetMapping("/api/read/user/player")
-	public Player findPlayerByCredentials(
-			@RequestParam(name="username") String username, 
-			@RequestParam(name="password") String password) {
-		
-		return pr.findPlayerByCredentials(username, password);
-	}
 	
 	
 
