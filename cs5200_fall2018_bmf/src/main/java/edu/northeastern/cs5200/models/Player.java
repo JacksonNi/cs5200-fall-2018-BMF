@@ -9,9 +9,9 @@ public class Player extends User {
 	
 	private String player_id;
 	private String nationality;
-	private int height;
-	private int weight;
-	private int jerseyNumber;
+	private Integer height;
+	private Integer weight;
+	private Integer jerseyNumber;
 	private String gender;
 	private String preferredFoot;
 	private String type;
@@ -42,22 +42,22 @@ public class Player extends User {
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
-	public int getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
-	public void setHeight(int height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
-	public int getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	public int getJerseyNumber() {
+	public Integer getJerseyNumber() {
 		return jerseyNumber;
 	}
-	public void setJerseyNumber(int jerseyNumber) {
+	public void setJerseyNumber(Integer jerseyNumber) {
 		this.jerseyNumber = jerseyNumber;
 	}
 	public String getGender() {
