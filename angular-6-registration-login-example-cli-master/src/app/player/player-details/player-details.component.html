@@ -1,0 +1,31 @@
+<div *ngIf="player">
+  <div>
+    <label>PlayerName: </label> {{player.fullName}}
+  </div>
+  <div>
+    <label>nationality: </label> {{player.nationality}}
+  </div>
+  <div>
+    <label>jerserNumber: </label> {{player.jerserNumber}}
+  </div>
+  <div>
+    <label>preferredFoot: </label> {{player.preferredFoot}}
+  </div>
+  <div>
+    <label>height: </label> {{player.height}}
+  </div>
+  <div>
+    <label>weight: </label> {{player.weight}}
+  </div>
+  <!--<div>-->
+    <!--<label>Active: </label> {{player.active}}-->
+  <!--</div>-->
+
+  <!--<span class="button is-small btn-primary" *ngIf='player.active' (click)='updateActive(false)'>Inactive</span>-->
+
+  <!--<span class="button is-small btn-primary" *ngIf='player.active' (click)='updateActive(true)'>Active</span>-->
+
+  <span class="button is-small btn-danger" (click)='deletePlayer()'>Delete</span>
+
+  <hr/>
+</div>

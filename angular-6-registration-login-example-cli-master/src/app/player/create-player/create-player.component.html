@@ -1,0 +1,42 @@
+<h3>Create Customer</h3>
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="fullName">fullName</label>
+      <input type="text" class="form-control" id="fullName" required [(ngModel)]="player.fullName" name="fullName">
+    </div>
+
+    <div class="form-group">
+      <label for="nationality">nationality</label>
+      <input type="text" class="form-control" id="nationality" required [(ngModel)]="player.nationality" name="nationality">
+    </div>
+
+    <div class="form-group">
+      <label for=" height"> height</label>
+      <input type="text" class="form-control" id=" height" required [(ngModel)]="player. height" name=" height">
+    </div>
+
+    <div class="form-group">
+      <label for=" weight"> weight</label>
+      <input type="text" class="form-control" id=" weight" required [(ngModel)]="player.weight" name=" weight">
+     </div>
+
+    <div class="form-group">
+      <label for=" jerserNumber"> jerserNumber</label>
+      <input type="text" class="form-control" id=" jerserNumber" required [(ngModel)]="player.jerserNumber" name=" jerserNumber">
+    </div>
+
+    <div class="form-group">
+      <label for=" preferredFoot"> preferredFoot</label>
+      <input type="text" class="form-control" id=" preferredFoot" required [(ngModel)]="player.preferredFoot" name=" preferredFoot">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newCustomer()">Add</button>
+</div>
