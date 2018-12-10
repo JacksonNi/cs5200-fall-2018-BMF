@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This is the front-end part of our final project with react. Since we are all beginners to front-end things, this part is quite simple and ugly with very limited functions that only provide all requirements specified. However, we do provide a powerful API service for this project, where you could find from our API document.
+This is the front-end part of our final project with react. Since we are all beginners to front-end things, this part is quite simple and direct with very limited functions that only provide all requirements specified. However, we do provide a powerful API service for this project, where you could find from our API document.
 
 ## Available Scripts
 
