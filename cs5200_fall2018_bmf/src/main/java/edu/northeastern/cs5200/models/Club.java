@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +16,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Club {
 	
@@ -27,9 +28,10 @@ public class Club {
 	private String name;
 	private String country;
 	private String venueName;
-	private int venueCapacity;
+	private Integer venueCapacity;
 	private String city;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="club")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Player> players;
@@ -38,11 +40,13 @@ public class Club {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Tournament> joined_tournaments;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="club")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private List<Jersey> jerseys;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="club")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -158,11 +162,11 @@ public class Club {
 		this.venueName = venueName;
 	}
 
-	public int getVenueCapacity() {
+	public Integer getVenueCapacity() {
 		return venueCapacity;
 	}
 
-	public void setVenueCapacity(int venueCapacity) {
+	public void setVenueCapacity(Integer venueCapacity) {
 		this.venueCapacity = venueCapacity;
 	}
 

@@ -26,10 +26,10 @@ public class Season {
 	private int id;
 	private String season_id;
 	private String sname;
-	private int scheduled;
-	private int played;
+	private Integer scheduled;
+	private Integer played;
 	private String max_coverage_level;
-	private int max_covered;
+	private Integer max_covered;
 	private Date start;
 	private Date end;
 	private String year;
